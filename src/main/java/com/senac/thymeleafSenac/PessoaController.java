@@ -9,20 +9,26 @@ import java.util.List;
 
 @Controller
 public class PessoaController{
-    private List<Pessoa> pessoaList = new ArrayList<>();
 
     @GetMapping("/")
     public String inicial(Model model){
-        model.addAttribute("pessoas", model);
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Alysson"));
+        pessoas.add(new Pessoa("Guste"));
+        pessoas.add(new Pessoa("Pedro"));
+        pessoas.add(new Pessoa("Henrique"));
+
+        model.addAttribute("pessoas", pessoas);
+
         return "index";
     }
 
 
-    public String adicionaPessoas(String nome){
-        if(nome != null && !nome.equals("")){
+    /*public String adicionaPessoas(String nome){
+        if(nome != null && !nome.isEmpty()){
             return "a";
         }
         return "";
-    }
+    }*/
 
 }
